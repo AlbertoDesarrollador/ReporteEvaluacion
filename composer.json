@@ -1,0 +1,12 @@
+{
+    "name": "alberto/metricas2",
+    "description": "Metricas",
+    "type": "project",
+    "require": {
+        "philcook/gtmetrix": "^1.0"
+    },
+    "require-dev": {
+        "philcook/gtmetrix": "^1.0"
+    },
+    "minimum-stability": "alpha"
+}
