@@ -16,7 +16,9 @@
     </form>
 
     <?php
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if(isset($_SESSION["prueba"])) {
             print "Tiempo de carga(ms): " . $_SESSION["tiempo"] . "<br>";
             print "Tamaño de la pagina: " . $_SESSION["size"] . "<br>";
