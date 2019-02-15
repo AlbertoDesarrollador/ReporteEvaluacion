@@ -10,18 +10,22 @@ function evaluar() {
         "correo" : "correo@example.com"
     }
 
-    // Peticion ajax
+    // Realizamos la petición ajax con los parametros de la evaluacion
     jQuery.ajax({
         data: parametros,
         url: "evaluar.php",
         type: "post", 
         beforeSend: function() {
             console.log("Evaluando pagina");
-            $('#contenedor').append('<div class="panel panel-primary"><div class="panel-heading"> Resultado </div></div>');  
+            jQuery('#contenedor').append('<div class="alert alert-info mt-4 mb-4 id="notificacion"><strong> Generando Reporte! </strong> Espere un momento </div>');  
+            jQuery('#contenedor').append('<div class="row"><div class="col-sm-12 col-md-4"> Columna 1 </div><div class="col-sm-12 col-md-8"> Columna 2 </div></div>');
         },
         success: function(response) {
+            jQuery('#notificacion').text("Reporte Exitoso!");
             console.log("Evaluación completada: " + response);
         }
     });
+
+
 
 }
