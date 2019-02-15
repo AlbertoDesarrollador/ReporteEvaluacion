@@ -23,8 +23,11 @@
 
     // Enviamos la información del reporte
     $evaluacion = array("direccion" => $_POST["pagina"], 
-                         "score" => $test.getPagespeedScore(), 
-                         "size" => $test.getHtmlBytes(), 
-                         "time" => $test.getHtmlLoadTime());
+                         "score" => $test->getPagespeedScore(), 
+                         "size" => $test->getHtmlBytes(), 
+                         "time" => $test->getHtmlLoadTime(),
+                         "resources" >= $test->getResources()
+                         "resources"
+                        );
     echo json_encode($evaluacion);
 ?>
