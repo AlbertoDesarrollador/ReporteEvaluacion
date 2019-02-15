@@ -1,29 +1,30 @@
 <?php
-    
+
+    // Cargamos el archivo autoload para poder cargar las clases
+    // de la API GTMetrix
     require __DIR__ . '/vendor/autoload.php';   
     use Entrecore\GTMetrixClient\GTMetrixClient;
     use Entrecore\GTMetrixClient\GTMetrixTest;
-    session_start();
 
-    print "Evaluando " . $_GET["pagina"];
+    // Generamos un nuevo cliente e iniciamos sesión 
     $client = new GTMetrixClient();
     $client->setUsername('albertoprado.desarrollador@gmail.com');
     $client->setAPIKey('65358e7d9a9d5b044519477d29523938');
     $client->getLocations();
     $client->getBrowsers();
-    $test = $client->startTest($_GET["pagina"]);
+
+    // Iniciamos la prueba y esperamos recibir el resultado 
+    $test = $client->startTest($_POST["pagina"]);
         while ($test->getState() != GTMetrixTest::STATE_COMPLETED &&
         $test->getState() != GTMetrixTest::STATE_ERROR) {
         $client->getTestStatus($test);
         sleep(1);
     }
 
-    // Almacenamos información
-    $_SESSION["test"] = True;
-    $_SESSION["time"] = $test->getFullyLoadedTime();
-    $_SESSION["size"] = $test->getPageBytes();
-    $_SESSION["score"] = $test->getPagespeedScore();
-    $_SESSION["report"] = $test->getReportUrl();
-    header("Location: index.php");
-
+    // Enviamos la información del reporte
+    $evaluacion = array("direccion" => $_POST["pagina"], 
+                         "score" => $test.getPagespeedScore(), 
+                         "size" => $test.getHtmlBytes(), 
+                         "time" => $test.getHtmlLoadTime());
+    echo json_encode($evaluacion);
 ?>
