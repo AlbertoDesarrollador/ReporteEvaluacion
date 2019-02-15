@@ -23,11 +23,14 @@
 
     // Enviamos la información del reporte
     $evaluacion = array("direccion" => $_POST["pagina"], 
+                         "id" => $test->getId(),
                          "score" => $test->getPagespeedScore(), 
                          "size" => $test->getHtmlBytes(), 
                          "time" => $test->getHtmlLoadTime(),
-                         "ySlow" => $test->getYslowScore()
+                         "ySlow" => $test->getYslowScore(),
+                         "report" => $test->getReportUrl()
                         );
     echo json_encode($evaluacion);
+
 ?>
 
