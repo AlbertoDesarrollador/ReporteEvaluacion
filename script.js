@@ -17,6 +17,7 @@ function evaluar() {
         type: "post", 
         beforeSend: function() {
             console.log("Evaluando pagina");
+            $('#contenedor').append('<div class="panel panel-primary"><div class="panel-heading"> Resultado </div></div>');  
         },
         success: function(response) {
             console.log("Evaluación completada: " + response);

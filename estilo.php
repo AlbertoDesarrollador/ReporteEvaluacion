@@ -25,6 +25,10 @@
             </div>
             <input type="button" value="Evaluar" onclick="evaluar()" class="btn btn-primary">
         </form>
+        <div class="panel panel-default">
+            <div class="panel-body">A Basic Panel</div>
+        </div>
+
     </div>
 </body>
 </html>

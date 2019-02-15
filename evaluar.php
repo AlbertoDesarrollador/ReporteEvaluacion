@@ -26,8 +26,9 @@
                          "score" => $test->getPagespeedScore(), 
                          "size" => $test->getHtmlBytes(), 
                          "time" => $test->getHtmlLoadTime(),
-                         "resources" >= $test->getResources()
-                         "resources"
+                         "resources" => $test->getResources(),
+                         "result" => $test->getResults()
                         );
     echo json_encode($evaluacion);
 ?>
+
